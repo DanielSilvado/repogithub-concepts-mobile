@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
+import api from './services/api';
 
 import {
   SafeAreaView,
   View,
-  FlatList,
   Text,
   StatusBar,
   StyleSheet,
@@ -11,7 +12,7 @@ import {
 } from "react-native";
 
 export default function App() {
-
+  const [repositories, setRepositories] = useState([]);
   useEffect(() => {
     api.get('/repositories')
       .then(response => {
